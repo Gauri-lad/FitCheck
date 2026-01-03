@@ -11,7 +11,11 @@ st.set_page_config(
 )
 
 # ---------------- LOAD MODEL ----------------
-model = pickle.load(open("bmi_model.pkl", "rb"))
+import os
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "bmi_model.pkl")
+model = pickle.load(open(MODEL_PATH, "rb"))
+
 
 # ---------------- HELPER FUNCTIONS ----------------
 def calculate_bmi(weight, height):
@@ -102,4 +106,5 @@ with tab3:
 # ---------------- FOOTER ----------------
 st.divider()
 st.caption("Check your fit with Gauri")
+
 
