@@ -14,7 +14,13 @@ st.set_page_config(
 import os
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "bmi_model.pkl")
+
+if not os.path.exists(MODEL_PATH):
+    st.error("❌ Model file not found. Please check deployment files.")
+    st.stop()
+
 model = pickle.load(open(MODEL_PATH, "rb"))
+
 
 
 # ---------------- HELPER FUNCTIONS ----------------
@@ -106,5 +112,6 @@ with tab3:
 # ---------------- FOOTER ----------------
 st.divider()
 st.caption("Check your fit with Gauri")
+
 
 
